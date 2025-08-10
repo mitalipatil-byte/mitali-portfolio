@@ -263,7 +263,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         @keyframes cosmicTextFlow {
@@ -275,7 +275,7 @@
             display: flex;
             flex-direction: column;
             list-style: none;
-            gap: 2rem;
+            gap: 3rem;
             margin: 0;
             padding: 0;
         }
@@ -294,19 +294,21 @@
             border: 1px solid rgba(138, 43, 226, 0.3);
             border-radius: 25px;
             backdrop-filter: blur(15px);
-            overflow: hidden;
+            overflow: visible;
             text-align: center;
             min-width: 100px;
             white-space: nowrap;
             box-shadow: 0 4px 15px rgba(138, 43, 226, 0.2);
+            margin: 0.5rem 0;
         }
 
         .nav-links a:hover {
             color: #fff;
             background: linear-gradient(135deg, rgba(138, 43, 226, 0.5), rgba(65, 105, 225, 0.5));
             border-color: #8A2BE2;
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.4);
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(138, 43, 226, 0.5);
+            z-index: 10;
         }
 
         .nav-links a.active {
@@ -1159,7 +1161,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Loading Animation - Astronaut Explorer */
+        /* Loading Animation - Rocket Launch */
         .loading {
             position: fixed;
             top: 0;
@@ -1180,45 +1182,106 @@
             pointer-events: none;
         }
 
-        .astronaut-container {
+        .rocket-container {
             position: relative;
             margin-bottom: 3rem;
-            animation: astronautFloat 4s ease-in-out infinite;
+            animation: rocketFloat 3s ease-in-out infinite;
         }
 
-        .astronaut {
-            width: 120px;
+        .rocket {
+            width: 80px;
             height: 120px;
-            background: linear-gradient(145deg, #e0e0e0, #c0c0c0);
-            border-radius: 50%;
+            background: linear-gradient(180deg, #e0e0e0, #c0c0c0, #a0a0a0);
+            border-radius: 40px 40px 10px 10px;
             position: relative;
-            border: 4px solid #8A2BE2;
             box-shadow: 
-                0 0 30px rgba(138, 43, 226, 0.5),
+                0 0 30px rgba(138, 43, 226, 0.4),
                 inset 0 0 20px rgba(255, 255, 255, 0.1);
+            border: 3px solid #8A2BE2;
         }
 
-        .astronaut::before {
+        .rocket::before {
             content: '';
             position: absolute;
-            top: 50%;
+            top: 15px;
+            left: 50%;
+            width: 25px;
+            height: 25px;
+            background: radial-gradient(circle, #4169E1, #8A2BE2);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 15px rgba(65, 105, 225, 0.8);
+        }
+
+        .rocket::after {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, #8A2BE2, #4169E1, #8A2BE2);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .flame {
+            position: absolute;
+            bottom: -40px;
             left: 50%;
             width: 60px;
             height: 60px;
-            background: radial-gradient(circle, rgba(138, 43, 226, 0.3), transparent 70%);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            animation: helmetGlow 2s ease-in-out infinite alternate;
+            transform: translateX(-50%);
         }
 
-        .astronaut::after {
-            content: '👨‍🚀';
+        .flame-main {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center top, 
+                #FF6B35 0%, 
+                #FF4500 30%, 
+                #FF8C00 60%, 
+                transparent 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: flameFlicker 0.3s ease-in-out infinite alternate;
+        }
+
+        .flame-inner {
             position: absolute;
-            top: 50%;
+            top: 10px;
             left: 50%;
-            font-size: 3rem;
-            transform: translate(-50%, -50%);
-            animation: astronautBounce 3s ease-in-out infinite;
+            width: 30px;
+            height: 40px;
+            background: radial-gradient(ellipse at center top, 
+                #FFD700 0%, 
+                #FFA500 40%, 
+                transparent 80%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            transform: translateX(-50%);
+            animation: flameFlicker 0.4s ease-in-out infinite alternate-reverse;
+        }
+
+        .rocket-wings {
+            position: absolute;
+            bottom: 20px;
+            left: -15px;
+            width: 20px;
+            height: 30px;
+            background: linear-gradient(45deg, #b0b0b0, #909090);
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+        }
+
+        .rocket-wings::after {
+            content: '';
+            position: absolute;
+            right: -90px;
+            top: 0;
+            width: 20px;
+            height: 30px;
+            background: linear-gradient(-45deg, #b0b0b0, #909090);
+            border-radius: 10px 0 0 10px;
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
         }
 
         .space-particles {
@@ -1285,29 +1348,24 @@
             animation: progressLoad 3s ease-in-out infinite;
         }
 
-        @keyframes astronautFloat {
+        @keyframes rocketFloat {
             0%, 100% { 
-                transform: translateY(0px) rotate(0deg); 
+                transform: translateY(0px) rotate(-2deg); 
             }
             50% { 
-                transform: translateY(-20px) rotate(5deg); 
+                transform: translateY(-15px) rotate(2deg); 
             }
         }
 
-        @keyframes helmetGlow {
+        @keyframes flameFlicker {
             0% { 
-                box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
-                opacity: 0.6;
+                transform: translateX(-50%) scale(1) scaleY(1);
+                opacity: 0.8;
             }
             100% { 
-                box-shadow: 0 0 40px rgba(138, 43, 226, 0.7);
+                transform: translateX(-50%) scale(1.1) scaleY(1.2);
                 opacity: 1;
             }
-        }
-
-        @keyframes astronautBounce {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.1); }
         }
 
         @keyframes particleFloat {
@@ -1371,15 +1429,21 @@
     <div class="loading" id="loading">
         <div class="space-particles" id="space-particles"></div>
         
-        <div class="astronaut-container">
-            <div class="astronaut"></div>
+        <div class="rocket-container">
+            <div class="rocket">
+                <div class="rocket-wings"></div>
+                <div class="flame">
+                    <div class="flame-main"></div>
+                    <div class="flame-inner"></div>
+                </div>
+            </div>
         </div>
         
         <div class="loading-content">
             <h1 class="loading-title">Cosmic Explorer</h1>
             <p class="loading-subtitle">
                 Preparing to embark on an extraordinary journey through the universe of innovation and creativity. 
-                Initializing stellar portfolio systems...
+                Rocket engines ignited, systems online, preparing for launch...
             </p>
             <div class="loading-progress">
                 <div class="loading-bar"></div>
