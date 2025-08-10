@@ -284,19 +284,23 @@
             color: #fff;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: all 0.3s ease;
             position: relative;
             text-transform: uppercase;
             letter-spacing: 1px;
-            padding: 1.5rem 1.2rem;
+            padding: 0;
             background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(65, 105, 225, 0.2));
             border: 1px solid rgba(138, 43, 226, 0.3);
-            border-radius: 25px;
+            border-radius: 50%;
             backdrop-filter: blur(15px);
             overflow: visible;
             text-align: center;
-            min-width: 100px;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             white-space: nowrap;
             box-shadow: 0 4px 15px rgba(138, 43, 226, 0.2);
             margin: 0.5rem 0;
@@ -1431,10 +1435,13 @@
         
         <div class="rocket-container">
             <div class="rocket">
-                <div class="rocket-wings"></div>
-                <div class="flame">
-                    <div class="flame-main"></div>
-                    <div class="flame-inner"></div>
+                <div class="rocket-nose"></div>
+                <div class="rocket-fins"></div>
+                <div class="flames-container">
+                    <div class="flame-large"></div>
+                    <div class="flame-medium"></div>
+                    <div class="flame-small"></div>
+                    <div class="exhaust-particles"></div>
                 </div>
             </div>
         </div>
@@ -1442,8 +1449,8 @@
         <div class="loading-content">
             <h1 class="loading-title">Cosmic Explorer</h1>
             <p class="loading-subtitle">
-                Preparing to embark on an extraordinary journey through the universe of innovation and creativity. 
-                Rocket engines ignited, systems online, preparing for launch...
+                Igniting rocket thrusters and preparing for an epic journey through the infinite cosmos of innovation. 
+                Multi-stage engines firing, exhaust particles streaming, T-minus countdown to cosmic exploration...
             </p>
             <div class="loading-progress">
                 <div class="loading-bar"></div>
