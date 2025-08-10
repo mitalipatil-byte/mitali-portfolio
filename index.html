@@ -243,11 +243,11 @@
             right: 2rem;
             transform: translateY(-50%);
             width: auto;
-            padding: 1.5rem 0.8rem;
+            padding: 2rem 1rem;
             background: linear-gradient(135deg, rgba(138, 43, 226, 0.15), rgba(65, 105, 225, 0.15));
             backdrop-filter: blur(25px);
             border: 1px solid rgba(138, 43, 226, 0.3);
-            border-radius: 25px;
+            border-radius: 30px;
             z-index: 1000;
             transition: all 0.3s ease;
             box-shadow: 0 10px 40px rgba(138, 43, 226, 0.2);
@@ -263,7 +263,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1rem;
         }
 
         @keyframes cosmicTextFlow {
@@ -275,7 +275,7 @@
             display: flex;
             flex-direction: column;
             list-style: none;
-            gap: 0.8rem;
+            gap: 1.2rem;
             margin: 0;
             padding: 0;
         }
@@ -284,19 +284,19 @@
             color: #fff;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             transition: all 0.3s ease;
             position: relative;
             text-transform: uppercase;
             letter-spacing: 1px;
-            padding: 1rem 0.8rem;
+            padding: 1.2rem 1rem;
             background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(65, 105, 225, 0.2));
             border: 1px solid rgba(138, 43, 226, 0.3);
             border-radius: 20px;
             backdrop-filter: blur(15px);
             overflow: hidden;
             text-align: center;
-            min-width: 80px;
+            min-width: 90px;
             white-space: nowrap;
         }
 
@@ -1158,14 +1158,14 @@
             scroll-behavior: smooth;
         }
 
-        /* Loading Animation - Space Launch */
+        /* Loading Animation - Astronaut Explorer */
         .loading {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #000011, #000033);
+            background: linear-gradient(135deg, #000011, #000033, #001133);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1179,46 +1179,173 @@
             pointer-events: none;
         }
 
-        .rocket {
-            width: 60px;
-            height: 100px;
-            background: linear-gradient(180deg, #8A2BE2, #4B0082);
-            border-radius: 30px 30px 0 0;
+        .astronaut-container {
             position: relative;
-            animation: rocketLaunch 2s ease-in-out infinite;
             margin-bottom: 3rem;
+            animation: astronautFloat 4s ease-in-out infinite;
         }
 
-        .rocket::before {
+        .astronaut {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(145deg, #e0e0e0, #c0c0c0);
+            border-radius: 50%;
+            position: relative;
+            border: 4px solid #8A2BE2;
+            box-shadow: 
+                0 0 30px rgba(138, 43, 226, 0.5),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .astronaut::before {
             content: '';
             position: absolute;
-            bottom: -20px;
+            top: 50%;
             left: 50%;
-            width: 40px;
-            height: 40px;
-            background: radial-gradient(circle, #FF6B35, #FF4500);
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.3), transparent 70%);
             border-radius: 50%;
-            transform: translateX(-50%);
-            animation: rocketFlame 0.5s ease-in-out infinite alternate;
+            transform: translate(-50%, -50%);
+            animation: helmetGlow 2s ease-in-out infinite alternate;
         }
 
-        .loading-text {
+        .astronaut::after {
+            content: '👨‍🚀';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 3rem;
+            transform: translate(-50%, -50%);
+            animation: astronautBounce 3s ease-in-out infinite;
+        }
+
+        .space-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #fff;
+            border-radius: 50%;
+            animation: particleFloat 6s linear infinite;
+        }
+
+        .loading-content {
+            text-align: center;
+            max-width: 500px;
+            padding: 0 2rem;
+        }
+
+        .loading-title {
             font-family: 'Orbitron', monospace;
             color: #8A2BE2;
-            font-size: 1.4rem;
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            animation: cosmicPulse 2s ease-in-out infinite;
+            animation: titlePulse 2s ease-in-out infinite;
+            background: linear-gradient(45deg, #8A2BE2, #4169E1, #FF69B4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        @keyframes rocketLaunch {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+        .loading-subtitle {
+            font-family: 'Space Grotesk', sans-serif;
+            color: #B8B8D1;
+            font-size: 1.1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            animation: subtitleFade 3s ease-in-out infinite;
         }
 
-        @keyframes rocketFlame {
-            0% { transform: translateX(-50%) scale(1); }
-            100% { transform: translateX(-50%) scale(1.3); }
+        .loading-progress {
+            width: 100%;
+            height: 4px;
+            background: rgba(138, 43, 226, 0.2);
+            border-radius: 10px;
+            margin-top: 2rem;
+            overflow: hidden;
+        }
+
+        .loading-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #8A2BE2, #4169E1, #FF69B4);
+            border-radius: 10px;
+            animation: progressLoad 3s ease-in-out infinite;
+        }
+
+        @keyframes astronautFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+            }
+            50% { 
+                transform: translateY(-20px) rotate(5deg); 
+            }
+        }
+
+        @keyframes helmetGlow {
+            0% { 
+                box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+                opacity: 0.6;
+            }
+            100% { 
+                box-shadow: 0 0 40px rgba(138, 43, 226, 0.7);
+                opacity: 1;
+            }
+        }
+
+        @keyframes astronautBounce {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        @keyframes particleFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) translateX(0px);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100vh) translateX(50px);
+            }
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { 
+                opacity: 0.8;
+                filter: drop-shadow(0 0 20px rgba(138, 43, 226, 0.5));
+            }
+            50% { 
+                opacity: 1;
+                filter: drop-shadow(0 0 30px rgba(138, 43, 226, 0.8));
+            }
+        }
+
+        @keyframes subtitleFade {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes progressLoad {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 100%; }
         }
 
         /* Floating Space Elements */
@@ -1241,8 +1368,22 @@
 <body>
     <!-- Loading Screen -->
     <div class="loading" id="loading">
-        <div class="rocket"></div>
-        <div class="loading-text">Launching Into Space...</div>
+        <div class="space-particles" id="space-particles"></div>
+        
+        <div class="astronaut-container">
+            <div class="astronaut"></div>
+        </div>
+        
+        <div class="loading-content">
+            <h1 class="loading-title">Cosmic Explorer</h1>
+            <p class="loading-subtitle">
+                Preparing to embark on an extraordinary journey through the universe of innovation and creativity. 
+                Initializing stellar portfolio systems...
+            </p>
+            <div class="loading-progress">
+                <div class="loading-bar"></div>
+            </div>
+        </div>
     </div>
 
     <!-- Space Background -->
@@ -1530,12 +1671,27 @@
     </footer>
 
     <script>
-        // Loading Screen
+        // Loading Screen with Space Particles
         window.addEventListener('load', () => {
+            createLoadingParticles();
             setTimeout(() => {
                 document.getElementById('loading').classList.add('hidden');
-            }, 2000);
+            }, 4000);
         });
+
+        // Create Loading Space Particles
+        function createLoadingParticles() {
+            const particlesContainer = document.getElementById('space-particles');
+            
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = Math.random() * 4 + 4 + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
 
         // Create Stars
         function createStars() {
